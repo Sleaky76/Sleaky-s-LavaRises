@@ -152,6 +152,7 @@ public class GameLogic implements Listener {
             players.setSaturation(5);
             players.setGameMode(GameMode.SURVIVAL);
         }
+        Bukkit.unloadWorld("lavaRises", false);
         startLavaRises.GS = GameStates.STOPPED;
     }
 
@@ -167,4 +168,12 @@ public class GameLogic implements Listener {
             event.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void onLavaPlacement(PlayerBucketEmptyEvent event) {
+        if (event.getBucket() == Material.LAVA_BUCKET && startLavaRises.PS == PlayerStates.PVP_OFF) {
+            event.setCancelled(true);
+        }
+    }
+
 }
