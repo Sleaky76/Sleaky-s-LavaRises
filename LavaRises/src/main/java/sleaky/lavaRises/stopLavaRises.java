@@ -33,8 +33,18 @@ public class stopLavaRises implements CommandExecutor {
                 p.setGameMode(GameMode.SURVIVAL);
             }
             Bukkit.unloadWorld("lavaRises", false);
+            try {
+                DeleteWorldFolder();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             sender.sendMessage(ChatColor.GREEN + "Game successfully stopped.");
         }
         return true;
     }
+
+    public static void DeleteWorldFolder() throws IOException {
+        FileUtils.deleteDirectory(new File("paperserver\\lavaRises"));
+    }
 }
+
