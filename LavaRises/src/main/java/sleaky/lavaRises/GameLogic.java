@@ -153,6 +153,11 @@ public class GameLogic implements Listener {
             players.setGameMode(GameMode.SURVIVAL);
         }
         Bukkit.unloadWorld("lavaRises", false);
+        try {
+                DeleteWorldFolder();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         startLavaRises.GS = GameStates.STOPPED;
     }
 
@@ -177,3 +182,4 @@ public class GameLogic implements Listener {
     }
 
 }
+
