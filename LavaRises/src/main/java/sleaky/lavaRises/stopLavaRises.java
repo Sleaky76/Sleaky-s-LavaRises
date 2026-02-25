@@ -8,6 +8,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.codehaus.plexus.util.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
 
 public class stopLavaRises implements CommandExecutor {
 
@@ -47,4 +52,5 @@ public class stopLavaRises implements CommandExecutor {
         FileUtils.deleteDirectory(new File("paperserver\\lavaRises"));
     }
 }
+
 
