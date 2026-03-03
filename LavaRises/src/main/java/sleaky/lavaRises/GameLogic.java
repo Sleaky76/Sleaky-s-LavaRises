@@ -54,10 +54,8 @@ public class GameLogic implements Listener {
                     Location loc = blockQueue.poll();
                     if (loc == null) break;
 
-                    // 2. Safety check: Ensure the world is still loaded
                     World world = loc.getWorld();
                     if (world != null && Bukkit.getWorld(world.getName()) != null) {
-                        // Check if chunk is loaded to prevent "Sync Load" errors
                         if (world.isChunkLoaded(loc.getBlockX() >> 4, loc.getBlockZ() >> 4)) {
                             loc.getBlock().setType(Material.LAVA, false);
                         }
@@ -89,7 +87,6 @@ public class GameLogic implements Listener {
                     return;
                 }
 
-                // Instead of setting blocks, we just add them to the "To-Do" list
                 for (int x = minX; x <= maxX; x++) {
                     for (int z = minZ; z <= maxZ; z++) {
                         blockQueue.add(new Location(world, x, currentY, z));
@@ -191,4 +188,5 @@ public class GameLogic implements Listener {
             event.setCancelled(true);
         }
     }
+
 }
